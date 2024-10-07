@@ -327,7 +327,7 @@ impl ZkSolc {
         debug!("spawned");
 
         let stdin = child.stdin.as_mut().unwrap();
-        serde_json::to_writer(stdin, input)?;
+        let _stdin_err = serde_json::to_writer(stdin, input);
         debug!("wrote JSON input to stdin");
 
         let output = child.wait_with_output().map_err(self.map_io_err())?;
